@@ -1,15 +1,12 @@
-import 'package:feature_first/utils/constants/ui_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BackgroundContainer extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
-  final Color? backgroundColor;
   final Widget? child;
   const BackgroundContainer({
     super.key,
     this.padding,
-    this.backgroundColor,
     this.child
   });
 
@@ -19,6 +16,7 @@ class BackgroundContainer extends StatelessWidget {
       width: 1.sw,
       height: 1.sh,
       clipBehavior: Clip.antiAlias,
+      padding: padding,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment(0.00, -1.00),
