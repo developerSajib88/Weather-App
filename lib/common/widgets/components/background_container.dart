@@ -3,18 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BackgroundContainer extends StatelessWidget {
-  final double? width;
-  final double? height;
   final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry? margin;
   final Color? backgroundColor;
   final Widget? child;
   const BackgroundContainer({
     super.key,
-    this.width,
-    this.height,
     this.padding,
-    this.margin,
     this.backgroundColor,
     this.child
   });
@@ -22,23 +16,15 @@ class BackgroundContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width ?? 1.sw,
-      height: height,
-      padding: padding ?? padding4,
-      margin: margin ?? padding4,
-      decoration: ShapeDecoration(
-        color: backgroundColor ?? Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+      width: 1.sw,
+      height: 1.sh,
+      clipBehavior: Clip.antiAlias,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0.00, -1.00),
+          end: Alignment(0, 1),
+          colors: [Color(0xFF352163), Color(0xFF331972), Color(0xFF33143C)],
         ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x0C000000),
-            blurRadius: 20,
-            offset: Offset(0, 0),
-            spreadRadius: 0,
-          )
-        ],
       ),
       child: child,
     );
