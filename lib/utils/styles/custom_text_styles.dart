@@ -33,7 +33,7 @@ class CustomTextStyles {
 
   static TextStyle descriptionTextStyles = GoogleFonts.poppins(
       fontSize: 6.sp,
-      color: ColorPalates.secondaryColor,
+      color: ColorPalates.secondary,
       fontWeight : FontWeight.normal
   );
 

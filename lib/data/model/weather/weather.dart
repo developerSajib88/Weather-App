@@ -207,7 +207,7 @@ class Current {
     windMph: json["wind_mph"]?.toDouble(),
     windKph: json["wind_kph"]?.toDouble(),
     windDegree: json["wind_degree"],
-    windDir: windDirValues.map[json["wind_dir"]]!,
+    windDir: windDirValues.map[json["wind_dir"]],
     pressureMb: json["pressure_mb"],
     pressureIn: json["pressure_in"]?.toDouble(),
     precipMm: json["precip_mm"],

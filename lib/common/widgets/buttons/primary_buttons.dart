@@ -26,7 +26,7 @@ class PrimaryButton extends StatelessWidget {
         height: 30.h,
         alignment: Alignment.center,
         decoration: ShapeDecoration(
-          color: backgroundColor ?? ColorPalates.primaryColor,
+          color: backgroundColor ?? ColorPalates.primary,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           shadows: const [
             BoxShadow(
