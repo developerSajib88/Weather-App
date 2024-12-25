@@ -5,13 +5,15 @@ import 'package:feature_first/features/weather/presentation/weather_info_card.da
 import 'package:feature_first/features/weather/presentation/weather_of_nextdays.dart';
 import 'package:feature_first/features/weather/presentation/weather_of_today.dart';
 import 'package:feature_first/features/weather/widget/dialog/search_dialog.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
+import 'package:location/location.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class WeatherScreen extends HookConsumerWidget {
+class WeatherScreen extends StatefulHookConsumerWidget {
 
   static String get path => "/weatherScreen";
   static String get name => "weatherScreen";
@@ -19,7 +21,71 @@ class WeatherScreen extends HookConsumerWidget {
   const WeatherScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends ConsumerState<WeatherScreen> {
+
+
+  Location location =  Location();
+  bool? _serviceEnabled;
+  PermissionStatus? _permissionGranted;
+  LocationData? _locationData;
+  String addressName = "";
+
+
+
+  void initLocation()async{
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled!) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled!) {
+        return;
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+    _locationData = await location.getLocation();
+    location.enableBackgroundMode(enable: true);
+    location.onLocationChanged.listen((LocationData currentLocation){
+      _locationData = currentLocation;
+    });
+
+    addressName = await getLocationName(_locationData?.latitude ?? 0.00, _locationData?.longitude ?? 0.00);
+    setState(() {});
+
+  }
+
+
+  Future<String> getLocationName(double latitude, double longitude) async {
+    try {
+      List<geocoding.Placemark> placeMarks = await geocoding.placemarkFromCoordinates(latitude, longitude);
+      geocoding.Placemark place = placeMarks[0];
+      return "${place.street}${place.subThoroughfare}, ${place.subAdministrativeArea}, ${place.subLocality}, ${place.locality}-${place.postalCode}, ${place.country}";
+    } catch (e) {
+      return "Location not found";
+    }
+  }
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initLocation();
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
 
     final weatherState = ref.watch(weatherProvider);
     final weatherCtrl = ref.watch(weatherProvider.notifier);
@@ -150,6 +216,40 @@ class WeatherScreen extends HookConsumerWidget {
                             ),
                             style: CustomTextStyles.primary,
                           ),
+
+                          gap4,
+
+                          Text(
+                            addressName,
+                            style: CustomTextStyles.primary.copyWith(
+                              fontSize: 5.sp
+                            ),
+                          ),
+
+                          gap4,
+
+                          Row(
+                            mainAxisAlignment: mainCenter,
+                            children: [
+                              Text(
+                                "Lat: ${_locationData?.latitude ?? 0.00}",
+                                style: CustomTextStyles.primary.copyWith(
+                                    fontSize: 5.sp
+                                ),
+                              ),
+
+                              gap6,
+
+                              Text(
+                                "Long: ${_locationData?.longitude ?? 0.00}",
+                                style: CustomTextStyles.primary.copyWith(
+                                    fontSize: 5.sp
+                                ),
+                              ),
+
+                            ],
+                          ),
+
 
                           gap12,
 

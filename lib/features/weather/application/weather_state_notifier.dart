@@ -25,4 +25,5 @@ class WeatherStateNotifier extends StateNotifier<WeatherState>{
     stateMaker(state.copyWith(isLoading: false));
   }
 
+
 }
