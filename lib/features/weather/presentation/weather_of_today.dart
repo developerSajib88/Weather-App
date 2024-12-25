@@ -1,16 +1,18 @@
-import 'package:feature_first/app/app.dart';
+import 'package:feature_first/common/global/functions/global_functions.dart';
 import 'package:feature_first/common/widgets/components/item_views/today_weather_item_view.dart';
-import 'package:feature_first/utils/constants/ui_constants.dart';
-import 'package:feature_first/utils/styles/color_palates.dart';
-import 'package:feature_first/utils/styles/custom_text_styles.dart';
+import 'package:feature_first/core/dependency_injection/dependency_injection.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class WeatherOfToday extends StatelessWidget {
+class WeatherOfToday extends HookConsumerWidget {
   const WeatherOfToday({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final weatherState = ref.watch(weatherProvider);
+
     return Column(
       crossAxisAlignment: crossStart,
       children: [
@@ -25,10 +27,14 @@ class WeatherOfToday extends StatelessWidget {
           width: 1.sw,
           height: 70.h,
           child: ListView.builder(
-              itemCount: 5,
+              itemCount: weatherState.weatherModel?.forecast?.forecastday?.first.hour?.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index){
-                return TodayWeatherItemView();
+                return TodayWeatherItemView(
+                  time: GlobalFunctions.formatTime(weatherState.weatherModel?.forecast?.forecastday?.first.hour?[index].time),
+                  image: "https:${weatherState.weatherModel?.forecast?.forecastday?.first.hour?[index].condition?.icon}",
+                  value: (weatherState.weatherModel?.forecast?.forecastday?.first.hour?[index].tempC ?? 23).toString(),
+                );
               }
           ),
         )

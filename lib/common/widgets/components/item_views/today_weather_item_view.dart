@@ -5,7 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TodayWeatherItemView extends StatelessWidget {
-  const TodayWeatherItemView({super.key});
+  final String time;
+  final String image;
+  final String value;
+  const TodayWeatherItemView({
+    super.key,
+    required this.time,
+    required this.image,
+    required this.value
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +27,14 @@ class TodayWeatherItemView extends StatelessWidget {
           children: [
 
             Text(
-              "12 AM",
+              time,
               style: CustomTextStyles.primaryBold,
             ),
 
             gap4,
 
-            Image.asset(
-              Assets.imagesCloud,
+            Image.network(
+              image,
               width: 30.w,
               height: 30.w,
             ),
@@ -38,9 +46,11 @@ class TodayWeatherItemView extends StatelessWidget {
               children: [
 
                 Text(
-                    "23",
+                    value,
                   style: CustomTextStyles.primary,
                 ),
+
+                gap2,
 
                 Padding(
                   padding: paddingBottom4,

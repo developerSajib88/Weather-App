@@ -1,5 +1,4 @@
 import 'package:feature_first/common/widgets/components/item_views/next_days_weather_item_views.dart';
-import 'package:feature_first/common/widgets/components/item_views/today_weather_item_view.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
 
