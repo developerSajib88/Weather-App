@@ -27,8 +27,8 @@ class WeatherInfo extends StatelessWidget {
 
         Image.asset(
           iconImage,
-          width: 20.w,
-          height: 20.w,
+          width: 15.w,
+          height: 15.w,
         ),
 
         gap4,
