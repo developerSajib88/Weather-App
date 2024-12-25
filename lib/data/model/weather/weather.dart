@@ -40,42 +40,42 @@ class WeatherModel {
 }
 
 class Current {
-  final int? lastUpdatedEpoch;
+  final num? lastUpdatedEpoch;
   final String? lastUpdated;
   final double? tempC;
   final double? tempF;
-  final int? isDay;
+  final num? isDay;
   final Condition? condition;
   final double? windMph;
   final double? windKph;
-  final int? windDegree;
+  final num? windDegree;
   final WindDir? windDir;
-  final int? pressureMb;
+  final num? pressureMb;
   final double? pressureIn;
-  final int? precipMm;
-  final int? precipIn;
-  final int? humidity;
-  final int? cloud;
+  final num? precipMm;
+  final num? precipIn;
+  final num? humidity;
+  final num? cloud;
   final double? feelslikeC;
   final double? feelslikeF;
   final double? windchillC;
   final double? windchillF;
   final double? heatindexC;
   final double? heatindexF;
-  final double? dewpointC;
-  final double? dewpointF;
-  final int? visKm;
-  final int? visMiles;
+  final double? dewponumC;
+  final double? dewponumF;
+  final num? visKm;
+  final num? visMiles;
   final double? uv;
   final double? gustMph;
   final double? gustKph;
-  final int? timeEpoch;
+  final num? timeEpoch;
   final String? time;
-  final int? snowCm;
-  final int? willItRain;
-  final int? chanceOfRain;
-  final int? willItSnow;
-  final int? chanceOfSnow;
+  final num? snowCm;
+  final num? willItRain;
+  final num? chanceOfRain;
+  final num? willItSnow;
+  final num? chanceOfSnow;
 
   Current({
     this.lastUpdatedEpoch,
@@ -100,8 +100,8 @@ class Current {
     this.windchillF,
     this.heatindexC,
     this.heatindexF,
-    this.dewpointC,
-    this.dewpointF,
+    this.dewponumC,
+    this.dewponumF,
     this.visKm,
     this.visMiles,
     this.uv,
@@ -117,42 +117,42 @@ class Current {
   });
 
   Current copyWith({
-    int? lastUpdatedEpoch,
+    num? lastUpdatedEpoch,
     String? lastUpdated,
     double? tempC,
     double? tempF,
-    int? isDay,
+    num? isDay,
     Condition? condition,
     double? windMph,
     double? windKph,
-    int? windDegree,
+    num? windDegree,
     WindDir? windDir,
-    int? pressureMb,
+    num? pressureMb,
     double? pressureIn,
-    int? precipMm,
-    int? precipIn,
-    int? humidity,
-    int? cloud,
+    num? precipMm,
+    num? precipIn,
+    num? humidity,
+    num? cloud,
     double? feelslikeC,
     double? feelslikeF,
     double? windchillC,
     double? windchillF,
     double? heatindexC,
     double? heatindexF,
-    double? dewpointC,
-    double? dewpointF,
-    int? visKm,
-    int? visMiles,
+    double? dewponumC,
+    double? dewponumF,
+    num? visKm,
+    num? visMiles,
     double? uv,
     double? gustMph,
     double? gustKph,
-    int? timeEpoch,
+    num? timeEpoch,
     String? time,
-    int? snowCm,
-    int? willItRain,
-    int? chanceOfRain,
-    int? willItSnow,
-    int? chanceOfSnow,
+    num? snowCm,
+    num? willItRain,
+    num? chanceOfRain,
+    num? willItSnow,
+    num? chanceOfSnow,
   }) =>
       Current(
         lastUpdatedEpoch: lastUpdatedEpoch ?? this.lastUpdatedEpoch,
@@ -177,8 +177,8 @@ class Current {
         windchillF: windchillF ?? this.windchillF,
         heatindexC: heatindexC ?? this.heatindexC,
         heatindexF: heatindexF ?? this.heatindexF,
-        dewpointC: dewpointC ?? this.dewpointC,
-        dewpointF: dewpointF ?? this.dewpointF,
+        dewponumC: dewponumC ?? this.dewponumC,
+        dewponumF: dewponumF ?? this.dewponumF,
         visKm: visKm ?? this.visKm,
         visMiles: visMiles ?? this.visMiles,
         uv: uv ?? this.uv,
@@ -220,8 +220,8 @@ class Current {
     windchillF: json["windchill_f"]?.toDouble(),
     heatindexC: json["heatindex_c"]?.toDouble(),
     heatindexF: json["heatindex_f"]?.toDouble(),
-    dewpointC: json["dewpoint_c"]?.toDouble(),
-    dewpointF: json["dewpoint_f"]?.toDouble(),
+    dewponumC: json["dewponum_c"]?.toDouble(),
+    dewponumF: json["dewponum_f"]?.toDouble(),
     visKm: json["vis_km"],
     visMiles: json["vis_miles"],
     uv: json["uv"]?.toDouble(),
@@ -259,8 +259,8 @@ class Current {
     "windchill_f": windchillF,
     "heatindex_c": heatindexC,
     "heatindex_f": heatindexF,
-    "dewpoint_c": dewpointC,
-    "dewpoint_f": dewpointF,
+    "dewponum_c": dewponumC,
+    "dewponum_f": dewponumF,
     "vis_km": visKm,
     "vis_miles": visMiles,
     "uv": uv,
@@ -277,9 +277,9 @@ class Current {
 }
 
 class Condition {
-  final Text? text;
-  final Icon? icon;
-  final int? code;
+  final String? text;
+  final String? icon;
+  final num? code;
 
   Condition({
     this.text,
@@ -288,9 +288,9 @@ class Condition {
   });
 
   Condition copyWith({
-    Text? text,
-    Icon? icon,
-    int? code,
+    String? text,
+    String? icon,
+    num? code,
   }) =>
       Condition(
         text: text ?? this.text,
@@ -303,8 +303,8 @@ class Condition {
   String toRawJson() => json.encode(toJson());
 
   factory Condition.fromJson(Map<String, dynamic> json) => Condition(
-    text: textValues.map[json["text"]]!,
-    icon: iconValues.map[json["icon"]]!,
+    text: json["text"]!,
+    icon: json["icon"]!,
     code: json["code"],
   );
 
@@ -384,7 +384,7 @@ class Forecast {
 
 class Forecastday {
   final DateTime? date;
-  final int? dateEpoch;
+  final num? dateEpoch;
   final Day? day;
   final Astro? astro;
   final List<Current>? hour;
@@ -399,7 +399,7 @@ class Forecastday {
 
   Forecastday copyWith({
     DateTime? date,
-    int? dateEpoch,
+    num? dateEpoch,
     Day? day,
     Astro? astro,
     List<Current>? hour,
@@ -439,9 +439,9 @@ class Astro {
   final String? moonrise;
   final String? moonset;
   final String? moonPhase;
-  final int? moonIllumination;
-  final int? isMoonUp;
-  final int? isSunUp;
+  final num? moonIllumination;
+  final num? isMoonUp;
+  final num? isSunUp;
 
   Astro({
     this.sunrise,
@@ -460,9 +460,9 @@ class Astro {
     String? moonrise,
     String? moonset,
     String? moonPhase,
-    int? moonIllumination,
-    int? isMoonUp,
-    int? isSunUp,
+    num? moonIllumination,
+    num? isMoonUp,
+    num? isSunUp,
   }) =>
       Astro(
         sunrise: sunrise ?? this.sunrise,
@@ -505,30 +505,30 @@ class Astro {
 class Day {
   final double? maxtempC;
   final double? maxtempF;
-  final double? mintempC;
-  final double? mintempF;
+  final double? mnumempC;
+  final double? mnumempF;
   final double? avgtempC;
   final double? avgtempF;
   final double? maxwindMph;
   final double? maxwindKph;
-  final int? totalprecipMm;
-  final int? totalprecipIn;
-  final int? totalsnowCm;
-  final int? avgvisKm;
-  final int? avgvisMiles;
-  final int? avghumidity;
-  final int? dailyWillItRain;
-  final int? dailyChanceOfRain;
-  final int? dailyWillItSnow;
-  final int? dailyChanceOfSnow;
+  final num? totalprecipMm;
+  final num? totalprecipIn;
+  final num? totalsnowCm;
+  final num? avgvisKm;
+  final num? avgvisMiles;
+  final num? avghumidity;
+  final num? dailyWillItRain;
+  final num? dailyChanceOfRain;
+  final num? dailyWillItSnow;
+  final num? dailyChanceOfSnow;
   final Condition? condition;
-  final int? uv;
+  final num? uv;
 
   Day({
     this.maxtempC,
     this.maxtempF,
-    this.mintempC,
-    this.mintempF,
+    this.mnumempC,
+    this.mnumempF,
     this.avgtempC,
     this.avgtempF,
     this.maxwindMph,
@@ -550,30 +550,30 @@ class Day {
   Day copyWith({
     double? maxtempC,
     double? maxtempF,
-    double? mintempC,
-    double? mintempF,
+    double? mnumempC,
+    double? mnumempF,
     double? avgtempC,
     double? avgtempF,
     double? maxwindMph,
     double? maxwindKph,
-    int? totalprecipMm,
-    int? totalprecipIn,
-    int? totalsnowCm,
-    int? avgvisKm,
-    int? avgvisMiles,
-    int? avghumidity,
-    int? dailyWillItRain,
-    int? dailyChanceOfRain,
-    int? dailyWillItSnow,
-    int? dailyChanceOfSnow,
+    num? totalprecipMm,
+    num? totalprecipIn,
+    num? totalsnowCm,
+    num? avgvisKm,
+    num? avgvisMiles,
+    num? avghumidity,
+    num? dailyWillItRain,
+    num? dailyChanceOfRain,
+    num? dailyWillItSnow,
+    num? dailyChanceOfSnow,
     Condition? condition,
-    int? uv,
+    num? uv,
   }) =>
       Day(
         maxtempC: maxtempC ?? this.maxtempC,
         maxtempF: maxtempF ?? this.maxtempF,
-        mintempC: mintempC ?? this.mintempC,
-        mintempF: mintempF ?? this.mintempF,
+        mnumempC: mnumempC ?? this.mnumempC,
+        mnumempF: mnumempF ?? this.mnumempF,
         avgtempC: avgtempC ?? this.avgtempC,
         avgtempF: avgtempF ?? this.avgtempF,
         maxwindMph: maxwindMph ?? this.maxwindMph,
@@ -599,8 +599,8 @@ class Day {
   factory Day.fromJson(Map<String, dynamic> json) => Day(
     maxtempC: json["maxtemp_c"]?.toDouble(),
     maxtempF: json["maxtemp_f"]?.toDouble(),
-    mintempC: json["mintemp_c"]?.toDouble(),
-    mintempF: json["mintemp_f"]?.toDouble(),
+    mnumempC: json["mnumemp_c"]?.toDouble(),
+    mnumempF: json["mnumemp_f"]?.toDouble(),
     avgtempC: json["avgtemp_c"]?.toDouble(),
     avgtempF: json["avgtemp_f"]?.toDouble(),
     maxwindMph: json["maxwind_mph"]?.toDouble(),
@@ -622,8 +622,8 @@ class Day {
   Map<String, dynamic> toJson() => {
     "maxtemp_c": maxtempC,
     "maxtemp_f": maxtempF,
-    "mintemp_c": mintempC,
-    "mintemp_f": mintempF,
+    "mnumemp_c": mnumempC,
+    "mnumemp_f": mnumempF,
     "avgtemp_c": avgtempC,
     "avgtemp_f": avgtempF,
     "maxwind_mph": maxwindMph,
@@ -650,7 +650,7 @@ class Location {
   final double? lat;
   final double? lon;
   final String? tzId;
-  final int? localtimeEpoch;
+  final num? localtimeEpoch;
   final String? localtime;
 
   Location({
@@ -671,7 +671,7 @@ class Location {
     double? lat,
     double? lon,
     String? tzId,
-    int? localtimeEpoch,
+    num? localtimeEpoch,
     String? localtime,
   }) =>
       Location(
