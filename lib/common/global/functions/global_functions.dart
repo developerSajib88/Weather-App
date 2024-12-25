@@ -10,4 +10,8 @@ class GlobalFunctions {
     return DateFormat("hh a").format(DateTime.parse(dateTime?? DateTime.now().toString()));
   }
 
+  static String formatWeekday(DateTime? dateTime){
+    return DateFormat("EEEE").format(dateTime?? DateTime.now());
+  }
+
 }
