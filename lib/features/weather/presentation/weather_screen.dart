@@ -4,6 +4,7 @@ import 'package:feature_first/core/dependency_injection/dependency_injection.dar
 import 'package:feature_first/features/weather/presentation/weather_info_card.dart';
 import 'package:feature_first/features/weather/presentation/weather_of_nextdays.dart';
 import 'package:feature_first/features/weather/presentation/weather_of_today.dart';
+import 'package:feature_first/features/weather/widget/dialog/search_dialog.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -29,34 +30,6 @@ class WeatherScreen extends HookConsumerWidget {
       await weatherCtrl.getWeatherData(query: query);
     }
 
-    void showSearchInputDialog(BuildContext context) async {
-      return showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text("Search Location"),
-              content: TextField(
-                controller: searchController,
-                decoration: const InputDecoration(hintText: "search by city,zip"),
-              ),
-              actions: <Widget>[
-                ElevatedButton(
-                  child: const Text("Cancel"),
-                  onPressed: () => Navigator.pop(context),
-                ),
-                ElevatedButton(
-                    child: const Text("OK"),
-                    onPressed: () {
-                      if (searchController.text.isNotEmpty) {
-                        getWeatherData(query: searchController.text);
-                        Navigator.pop(context, searchController.text);
-                      }
-                    }),
-              ],
-            );
-          });
-    }
-
 
     return Scaffold(
       body: BackgroundContainer(
@@ -72,7 +45,18 @@ class WeatherScreen extends HookConsumerWidget {
                   children:[
 
                     InkWell(
-                      onTap: ()=> showSearchInputDialog(context),
+                      onTap: ()=> showSearchInputDialog(
+                          context: context,
+                          searchController: searchController,
+                          onPressed: () {
+                            if (searchController.text.isNotEmpty) {
+                              getWeatherData(query: searchController.text).whenComplete((){
+                                searchController.clear();
+                              });
+                              Navigator.pop(context);
+                            }
+                          }
+                      ),
                       child: Opacity(
                         opacity: 0.30,
                         child: Container(
