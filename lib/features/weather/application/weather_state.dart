@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:feature_first/data/model/weather/weather.dart';
 
-class DashboardState extends Equatable{
+class WeatherState extends Equatable{
 
   final bool isLoading;
   final WeatherModel? weatherModel;
 
-  const DashboardState({
+  const WeatherState({
     required this.isLoading,
     required this.weatherModel,
   });
@@ -17,15 +17,15 @@ class DashboardState extends Equatable{
     isLoading
   ];
 
-  factory DashboardState.init()=> const DashboardState(
+  factory WeatherState.init()=> const WeatherState(
       isLoading: false,
       weatherModel: null
   );
 
-  DashboardState copyWith({
+  WeatherState copyWith({
     bool? isLoading,
     WeatherModel? weatherModel
-  })=>DashboardState(
+  })=>WeatherState(
       isLoading: isLoading ?? this.isLoading,
       weatherModel: weatherModel ?? this.weatherModel
   );

@@ -1,5 +1,5 @@
 import 'package:feature_first/common/widgets/components/background_card.dart';
-import 'package:feature_first/features/dashboard/widget/weather_info.dart';
+import 'package:feature_first/features/weather/widget/weather_info.dart';
 import 'package:feature_first/generated/assets.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';

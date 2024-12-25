@@ -1,18 +1,18 @@
 import 'package:feature_first/common/widgets/components/background_container.dart';
-import 'package:feature_first/features/dashboard/presentation/weather_info_card.dart';
-import 'package:feature_first/features/dashboard/presentation/weather_of_nextdays.dart';
-import 'package:feature_first/features/dashboard/presentation/weather_of_today.dart';
+import 'package:feature_first/features/weather/presentation/weather_info_card.dart';
+import 'package:feature_first/features/weather/presentation/weather_of_nextdays.dart';
+import 'package:feature_first/features/weather/presentation/weather_of_today.dart';
 import 'package:feature_first/generated/assets.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class DashboardScreen extends HookConsumerWidget {
+class WeatherScreen extends HookConsumerWidget {
 
-  static String get path => "/dashboardScreen";
-  static String get name => "dashboardScreen";
+  static String get path => "/weatherScreen";
+  static String get name => "weatherScreen";
 
-  const DashboardScreen({super.key});
+  const WeatherScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
