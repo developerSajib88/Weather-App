@@ -5,22 +5,23 @@ import 'package:flutter/material.dart';
 class CustomTextStyles {
 
   static TextStyle primary = GoogleFonts.poppins(
-    fontSize: 7.sp,
+    fontSize: 8.sp,
+    color: ColorPalates.defaultWhite,
     fontWeight: FontWeight.w400,
     height: 1,
   );
 
   static TextStyle secondary = GoogleFonts.poppins(
     color: ColorPalates.defaultWhite,
-    fontSize: 7.sp,
+    fontSize: 8.sp,
     fontWeight: FontWeight.w600,
     height: 1.07,
   );
 
-  static TextStyle primaryTextStylesBold = GoogleFonts.poppins(
-      fontSize: 8.sp,
-      color: ColorPalates.secondaryColor,
-      fontWeight: FontWeight.w600
+  static TextStyle primaryBold = GoogleFonts.poppins(
+    fontSize: 8.sp,
+    color: ColorPalates.defaultWhite,
+    fontWeight: FontWeight.w600,
   );
 
   static TextStyle titleTextStyles = GoogleFonts.poppins(

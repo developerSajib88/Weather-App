@@ -57,9 +57,9 @@ class PrimaryTextFormFields extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(title, style: CustomTextStyles.primaryTextStyles),
+            Text(title, style: CustomTextStyles.primary),
             if (isRequired == true)
-              Text("*", style: CustomTextStyles.primaryTextStyles.copyWith(color: ColorPalates.primaryColor)),
+              Text("*", style: CustomTextStyles.primary.copyWith(color: ColorPalates.primaryColor)),
           ],
         ),
         SizedBox(

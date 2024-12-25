@@ -73,6 +73,9 @@ dependencies:
   # OTP form fields
   # pinput: ^5.0.0
 
+  # Weather Wise Background
+  flutter_weather_bg_null_safety: ^1.0.0
+
 
 
 dev_dependencies:
