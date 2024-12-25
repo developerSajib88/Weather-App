@@ -16,9 +16,9 @@ void main()async{
   await Hive.initFlutter();
   await Hive.openBox(KeyLocalDatabase.databaseName);
 
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: ColorPalates.statusBarColor,
-      statusBarIconBrightness: Brightness.light));
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  //     statusBarColor: ColorPalates.statusBarColor,
+  //     statusBarIconBrightness: Brightness.light));
 
   runApp(
       const ProviderScope(
