@@ -39,7 +39,7 @@
 
 ## App Screenshot's
 
-![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Car%20Workshop/screen_1.png) | ![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Car%20Workshop/screen_2.png) | ![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Car%20Workshop/screen_3.png)
+![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_1.jpg) | ![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_2.jpg) | ![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_3.jpg)
 --- | --- | ---
 *Welcome* | *SignIn* | *Registration*
 
