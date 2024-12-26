@@ -1,5 +1,6 @@
 import 'package:feature_first/common/global/functions/global_functions.dart';
 import 'package:feature_first/common/widgets/components/background_container.dart';
+import 'package:feature_first/common/widgets/icon_image_view.dart';
 import 'package:feature_first/core/dependency_injection/dependency_injection.dart';
 import 'package:feature_first/features/weather/presentation/unit_conversion.dart';
 import 'package:feature_first/features/weather/presentation/weather_info_card.dart';
@@ -245,10 +246,9 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
 
                           gap6,
 
-                          Image.network(
-                            "https:${weatherState.weatherModel?.current?.condition?.icon}",
+                          IconImageView(
+                              image: "https:${weatherState.weatherModel?.current?.condition?.icon}"
                           ),
-
 
                           Row(
                             mainAxisAlignment: mainCenter,

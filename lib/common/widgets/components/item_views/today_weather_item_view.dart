@@ -1,4 +1,5 @@
 import 'package:feature_first/common/widgets/components/background_card.dart';
+import 'package:feature_first/common/widgets/icon_image_view.dart';
 import 'package:feature_first/generated/assets.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -33,11 +34,7 @@ class TodayWeatherItemView extends StatelessWidget {
 
             gap4,
 
-            Image.network(
-              image,
-              width: 30.w,
-              height: 30.w,
-            ),
+            IconImageView(image: image),
 
             gap4,
 
