@@ -42,18 +42,19 @@ class WeatherScreen extends HookConsumerWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          gap12,
+
+                          gap28,
+
+
+                          IconImageView(
+                              image: "https:${weatherState.weatherModel?.current?.condition?.icon}"
+                          ),
 
                           Text(
                             weatherState.weatherModel?.current?.condition?.text ?? "Mostly Sunny",
                             style: CustomTextStyles.secondary,
                           ),
 
-                          gap6,
-
-                          IconImageView(
-                              image: "https:${weatherState.weatherModel?.current?.condition?.icon}"
-                          ),
 
                           Row(
                             mainAxisAlignment: mainCenter,

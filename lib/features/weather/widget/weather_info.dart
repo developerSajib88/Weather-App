@@ -1,4 +1,3 @@
-import 'package:feature_first/app/app.dart';
 import 'package:feature_first/utils/constants/ui_constants.dart';
 import 'package:feature_first/utils/styles/custom_text_styles.dart';
 import 'package:feature_first/utils/utils.dart';
@@ -42,7 +41,9 @@ class WeatherInfo extends StatelessWidget {
 
         Text(
           title,
-          style: CustomTextStyles.secondary,
+          style: CustomTextStyles.secondary.copyWith(
+            fontSize: 5.5.sp
+          ),
         )
         
       ],

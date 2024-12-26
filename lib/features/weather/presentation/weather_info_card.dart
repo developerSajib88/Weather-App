@@ -35,11 +35,18 @@ class WeatherInfoCard extends HookConsumerWidget {
 
 
           WeatherInfo(
+            iconImage: Assets.iconsFeelsLike,
+            title: "Feels Like",
+            value: (weatherState.weatherModel?.current?.feelslikeC ?? 00).toString(),
+          ),
+
+
+
+          WeatherInfo(
             iconImage: Assets.iconsWindSpeed,
             title: "Wind Speed",
             value: "${(weatherState.weatherModel?.current?.windKph ?? 00).toString()} Km/h",
           ),
-
 
 
         ],
