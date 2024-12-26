@@ -58,8 +58,6 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
     });
 
     addressName = await getLocationName(_locationData?.latitude ?? 0.00, _locationData?.longitude ?? 0.00);
-    setState(() {});
-
   }
 
 
@@ -67,7 +65,7 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
     try {
       List<geocoding.Placemark> placeMarks = await geocoding.placemarkFromCoordinates(latitude, longitude);
       geocoding.Placemark place = placeMarks[0];
-      return "${place.street}${place.subThoroughfare}, ${place.subAdministrativeArea}, ${place.subLocality}, ${place.locality}-${place.postalCode}, ${place.country}";
+      return "${place.subAdministrativeArea}";
     } catch (e) {
       return "Location not found";
     }
@@ -140,14 +138,43 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
                     ),
 
 
-                    Text(
-                      weatherState.weatherModel?.location?.name ?? "Dhaka",
-                      style: CustomTextStyles.primary,
+                    Column(
+                      children: [
+                        Text(
+                          weatherState.weatherModel?.location?.name ?? "Dhaka",
+                          style: CustomTextStyles.primary,
+                        ),
+
+                        gap4,
+
+                        Row(
+                          mainAxisAlignment: mainCenter,
+                          children: [
+                            Text(
+                              "Lat: ${weatherState.weatherModel?.location?.lat ?? "23.383923"}",
+                              style: CustomTextStyles.primary.copyWith(
+                                  fontSize: 5.sp
+                              ),
+                            ),
+
+                            gap4,
+
+                            Text(
+                              "Long: ${weatherState.weatherModel?.location?.lon ?? "23.383923"}",
+                              style: CustomTextStyles.primary.copyWith(
+                                  fontSize: 5.sp
+                              ),
+                            ),
+
+                          ],
+                        ),
+
+                      ],
                     ),
 
 
                     InkWell(
-                      onTap: ()=> getWeatherData(),
+                      onTap: ()=> getWeatherData(query: addressName.isNotEmpty ? addressName : null),
                       child: Opacity(
                         opacity: 0.30,
                         child: Container(
@@ -216,40 +243,6 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
                             ),
                             style: CustomTextStyles.primary,
                           ),
-
-                          gap4,
-
-                          Text(
-                            addressName,
-                            style: CustomTextStyles.primary.copyWith(
-                              fontSize: 5.sp
-                            ),
-                          ),
-
-                          gap4,
-
-                          Row(
-                            mainAxisAlignment: mainCenter,
-                            children: [
-                              Text(
-                                "Lat: ${_locationData?.latitude ?? 0.00}",
-                                style: CustomTextStyles.primary.copyWith(
-                                    fontSize: 5.sp
-                                ),
-                              ),
-
-                              gap6,
-
-                              Text(
-                                "Long: ${_locationData?.longitude ?? 0.00}",
-                                style: CustomTextStyles.primary.copyWith(
-                                    fontSize: 5.sp
-                                ),
-                              ),
-
-                            ],
-                          ),
-
 
                           gap12,
 

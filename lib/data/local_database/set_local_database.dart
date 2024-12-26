@@ -15,29 +15,8 @@ class SetLocalDatabase{
     }
   }
 
-  void userIsLogin(bool value) =>
-      storingData(KeyLocalDatabase.userIsLogIn, value);
-
-  void userRegister(bool value) =>
-      storingData(KeyLocalDatabase.userRegister, value);
-
-  void userType(String value) => storingData(KeyLocalDatabase.userType, value);
-
-  void userId(int value) => storingData(KeyLocalDatabase.userId, value);
-
-  void userName(String value) => storingData(KeyLocalDatabase.userName, value);
-
-  void userEmail(String value) =>
-      storingData(KeyLocalDatabase.userEmail, value);
-
-  void userPhone(String value) =>
-      storingData(KeyLocalDatabase.userPhone, value);
-
-  void userAccessToken(String value) =>
-      storingData(KeyLocalDatabase.userAccessToken, value);
-
-  void userRefreshToken(String value) =>
-      storingData(KeyLocalDatabase.userRefreshToken, value);
+  void storeWeatherInLocal(String value) =>
+      storingData(KeyLocalDatabase.weatherData, value);
 
   cleanBox() => database.clear();
 
