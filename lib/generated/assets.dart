@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String iconsFeelsLike = 'assets/icons/feels_like.png';
   static const String iconsFlutter = 'assets/icons/flutter.png';
   static const String iconsHumadity = 'assets/icons/humadity.png';
   static const String iconsPrecipitation = 'assets/icons/precipitation.png';

@@ -76,7 +76,11 @@ dependencies:
   # Weather Wise Background
   flutter_weather_bg_null_safety: ^1.0.0
 
+  # Track Latitude and Longitude
+  location: any
 
+  # User Current Location
+  geocoding: ^3.0.0
 
 dev_dependencies:
   flutter_test:

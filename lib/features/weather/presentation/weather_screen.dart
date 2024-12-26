@@ -1,15 +1,15 @@
 import 'package:feature_first/common/global/functions/global_functions.dart';
 import 'package:feature_first/common/widgets/components/background_container.dart';
+import 'package:feature_first/common/widgets/icon_image_view.dart';
 import 'package:feature_first/core/dependency_injection/dependency_injection.dart';
+import 'package:feature_first/features/weather/presentation/weather_app_bar.dart';
 import 'package:feature_first/features/weather/presentation/weather_info_card.dart';
 import 'package:feature_first/features/weather/presentation/weather_of_nextdays.dart';
 import 'package:feature_first/features/weather/presentation/weather_of_today.dart';
-import 'package:feature_first/features/weather/widget/dialog/search_dialog.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class WeatherScreen extends HookConsumerWidget {
 
@@ -22,14 +22,6 @@ class WeatherScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final weatherState = ref.watch(weatherProvider);
-    final weatherCtrl = ref.watch(weatherProvider.notifier);
-
-    final searchController = useTextEditingController();
-
-    Future<void> getWeatherData({String? query})async{
-      await weatherCtrl.getWeatherData(query: query);
-    }
-
 
     return Scaffold(
       body: BackgroundContainer(
@@ -40,86 +32,26 @@ class WeatherScreen extends HookConsumerWidget {
             child: Column(
               children: [
 
-                Row(
-                  mainAxisAlignment: mainSpaceBetween,
-                  children:[
-
-                    InkWell(
-                      onTap: ()=> showSearchInputDialog(
-                          context: context,
-                          searchController: searchController,
-                          onPressed: () {
-                            if (searchController.text.isNotEmpty) {
-                              getWeatherData(query: searchController.text).whenComplete((){
-                                searchController.clear();
-                              });
-                              Navigator.pop(context);
-                            }
-                          }
-                      ),
-                      child: Opacity(
-                        opacity: 0.30,
-                        child: Container(
-                          width: 20.w,
-                          height: 20.w,
-                          decoration: BoxDecoration(
-                            color: ColorPalates.defaultWhite,
-                            borderRadius: radius4
-                          ),
-                          child: const Icon(
-                            Icons.search,
-                          ),
-                        ),
-                      ),
-                    ),
-
-
-                    Text(
-                      weatherState.weatherModel?.location?.name ?? "Dhaka",
-                      style: CustomTextStyles.primary,
-                    ),
-
-
-                    InkWell(
-                      onTap: ()=> getWeatherData(),
-                      child: Opacity(
-                        opacity: 0.30,
-                        child: Container(
-                          width: 20.w,
-                          height: 20.w,
-                          decoration: BoxDecoration(
-                              color: ColorPalates.defaultWhite,
-                              borderRadius: radius4
-                          ),
-                          child: const Icon(
-                            Icons.gps_fixed,
-                          ),
-                        ),
-                      ),
-                    ),
-
-
-                  ]
-                ),
+                const WeatherAppBar(),
 
                 Expanded(
                   child: RefreshIndicator(
-                    onRefresh: ()=> getWeatherData(),
+                    onRefresh: ()=> ref.read(weatherProvider.notifier).getWeatherData(),
                     color: ColorPalates.primary,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          gap12,
+
+                          gap28,
+
+
+                          IconImageView(
+                              image: "https:${weatherState.weatherModel?.current?.condition?.icon}"
+                          ),
 
                           Text(
                             weatherState.weatherModel?.current?.condition?.text ?? "Mostly Sunny",
                             style: CustomTextStyles.secondary,
-                          ),
-
-                          gap6,
-
-                          Image.network(
-                            "https:${weatherState.weatherModel?.current?.condition?.icon}",
                           ),
 
 
@@ -145,24 +77,16 @@ class WeatherScreen extends HookConsumerWidget {
                           ),
 
                           Text(
-                            GlobalFunctions.formatDateTime(
-                                weatherState.weatherModel?.current?.lastUpdated
-                            ),
+                            GlobalFunctions.formatDateTime(weatherState.weatherModel?.current?.lastUpdated),
                             style: CustomTextStyles.primary,
                           ),
 
                           gap12,
-
                           const WeatherInfoCard(),
-
                           gap8,
-
                           const WeatherOfToday(),
-
                           gap8,
-
                           const WeatherOfNextDays(),
-
                           gap48
 
                         ],

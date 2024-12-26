@@ -303,8 +303,8 @@ class Condition {
   String toRawJson() => json.encode(toJson());
 
   factory Condition.fromJson(Map<String, dynamic> json) => Condition(
-    text: json["text"]!,
-    icon: json["icon"]!,
+    text: json["text"],
+    icon: json["icon"],
     code: json["code"],
   );
 
