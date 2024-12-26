@@ -1,6 +1,5 @@
 import 'package:feature_first/common/widgets/components/background_card.dart';
 import 'package:feature_first/common/widgets/icon_image_view.dart';
-import 'package:feature_first/generated/assets.dart';
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

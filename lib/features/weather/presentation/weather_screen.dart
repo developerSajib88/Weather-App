@@ -9,7 +9,6 @@ import 'package:feature_first/features/weather/presentation/weather_of_today.dar
 import 'package:feature_first/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class WeatherScreen extends HookConsumerWidget {
