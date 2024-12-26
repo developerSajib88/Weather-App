@@ -1,4 +1,11 @@
 
+## App Screenshot's
+
+![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_1.jpg) | ![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_2.jpg) | ![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_3.jpg)
+--- | --- | ---
+*Weather Screen* | *Search Weather* | *Unit Conversion*
+
+
 ### Project Summary
 
 **Objective**: The Flutter Weather App provides real-time weather updates and forecasts for the next three days, leveraging a public weather API. The app features automatic location detection and manual location input, along with a visually appealing interface. Additional details such as wind speed, humidity, pressure, and visibility are included, ensuring a comprehensive weather tracking experience.
@@ -36,12 +43,6 @@
    
 
 ---
-
-## App Screenshot's
-
-![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_1.jpg) | ![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_2.jpg) | ![App Screenshot](https://github.com/developerSajib88/Project-Screenshots/blob/main/Weather%20App/screenshot_3.jpg)
---- | --- | ---
-*Welcome* | *SignIn* | *Registration*
 
 Here’s a more detailed, step-by-step instruction set to help you thoroughly set up and run the Weather App Flutter project:
 
