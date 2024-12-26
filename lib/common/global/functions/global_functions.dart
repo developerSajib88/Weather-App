@@ -9,8 +9,6 @@ class GlobalFunctions {
     return result;
   }
 
-
-
   static String formatDateTime(String? dateTime){
     return DateFormat("EEE, dd MMMM yyyy | hh:mm: a").format(DateTime.parse(dateTime?? DateTime.now().toString()));
   }
@@ -22,5 +20,17 @@ class GlobalFunctions {
   static String formatWeekday(DateTime? dateTime){
     return DateFormat("EEEE").format(dateTime?? DateTime.now());
   }
+
+  static String unitConverter({required String input, required String conversionType}){
+    double result = 0.00;
+    double value = double.tryParse(input) ?? 0.0;
+    if (conversionType == "CelsiusToFahrenheit") {
+      result = ((value * 9 / 5) + 32);
+    } else {
+      result = ((value - 32) * 5 / 9);
+    }
+    return result.toStringAsFixed(2);
+  }
+
 
 }

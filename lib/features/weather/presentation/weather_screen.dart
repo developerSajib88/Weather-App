@@ -1,6 +1,7 @@
 import 'package:feature_first/common/global/functions/global_functions.dart';
 import 'package:feature_first/common/widgets/components/background_container.dart';
 import 'package:feature_first/core/dependency_injection/dependency_injection.dart';
+import 'package:feature_first/features/weather/presentation/unit_conversion.dart';
 import 'package:feature_first/features/weather/presentation/weather_info_card.dart';
 import 'package:feature_first/features/weather/presentation/weather_of_nextdays.dart';
 import 'package:feature_first/features/weather/presentation/weather_of_today.dart';
@@ -137,6 +138,7 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
                       ),
                     ),
 
+                    const Spacer(),
 
                     Column(
                       children: [
@@ -173,22 +175,54 @@ class _WeatherScreenState extends ConsumerState<WeatherScreen> {
                     ),
 
 
-                    InkWell(
-                      onTap: ()=> getWeatherData(query: addressName.isNotEmpty ? addressName : null),
-                      child: Opacity(
-                        opacity: 0.30,
-                        child: Container(
-                          width: 20.w,
-                          height: 20.w,
-                          decoration: BoxDecoration(
-                              color: ColorPalates.defaultWhite,
-                              borderRadius: radius4
-                          ),
-                          child: const Icon(
-                            Icons.gps_fixed,
+                    const Spacer(),
+
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: ()=> getWeatherData(query: addressName.isNotEmpty ? addressName : null),
+                          child: Opacity(
+                            opacity: 0.30,
+                            child: Container(
+                              width: 20.w,
+                              height: 20.w,
+                              decoration: BoxDecoration(
+                                  color: ColorPalates.defaultWhite,
+                                  borderRadius: radius4
+                              ),
+                              child: const Icon(
+                                Icons.gps_fixed,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+
+
+                        gap4,
+
+                        InkWell(
+                          onTap: (){
+                            showDialog(
+                                context: context,
+                                builder: (context)=> ConversionDialog()
+                            );
+                          },
+                          child: Opacity(
+                            opacity: 0.30,
+                            child: Container(
+                              width: 20.w,
+                              height: 20.w,
+                              decoration: BoxDecoration(
+                                  color: ColorPalates.defaultWhite,
+                                  borderRadius: radius4
+                              ),
+                              child: const Icon(
+                                Icons.calculate,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
 
 
