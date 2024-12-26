@@ -49,7 +49,7 @@ class PrimaryTextFormFields extends StatelessWidget {
   Widget build(BuildContext context) {
     final fieldBorder = OutlineInputBorder(
         borderRadius: radius4,
-        borderSide: BorderSide(color: ColorPalates.primaryColor, width: 0.5.w)
+        borderSide: BorderSide(color: ColorPalates.primary, width: 0.5.w)
     );
 
     return Column(
@@ -57,9 +57,9 @@ class PrimaryTextFormFields extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(title, style: CustomTextStyles.primaryTextStyles),
+            Text(title, style: CustomTextStyles.primary),
             if (isRequired == true)
-              Text("*", style: CustomTextStyles.primaryTextStyles.copyWith(color: ColorPalates.primaryColor)),
+              Text("*", style: CustomTextStyles.primary.copyWith(color: ColorPalates.primary)),
           ],
         ),
         SizedBox(
@@ -71,7 +71,7 @@ class PrimaryTextFormFields extends StatelessWidget {
             minLines: minLines ?? 1,
             maxLines: minLines ?? 1,
             keyboardType: textInputType,
-            cursorColor: ColorPalates.primaryColor,
+            cursorColor: ColorPalates.primary,
             obscureText: passwordVisibility ?? false,
             enabled: enable ?? true,
             decoration: InputDecoration(
@@ -85,7 +85,7 @@ class PrimaryTextFormFields extends StatelessWidget {
                   passwordVisibility == true
                       ? Icons.visibility_outlined
                       : Icons.visibility_off_outlined,
-                  color: ColorPalates.secondaryColor,
+                  color: ColorPalates.secondary,
                 ),
               )
                   : suffixIcon,

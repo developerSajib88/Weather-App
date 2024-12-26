@@ -19,7 +19,7 @@ class RouteErrorPage extends HookWidget {
         //color Changed Here
         title: Text(
           "Something went wrong!",
-          style: CustomTextStyles.primaryTextStylesBold
+          style: CustomTextStyles.primaryBold
               .copyWith(color: Colors.white),
         ),
 
