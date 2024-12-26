@@ -1,7 +1,7 @@
-import 'package:feature_first/features/dashboard/application/dashboard_state.dart';
-import 'package:feature_first/features/dashboard/application/dashboard_state_notifier.dart';
-import 'package:feature_first/features/dashboard/domain/dashboard_domain.dart';
-import 'package:feature_first/features/dashboard/infrastructure/dashboard_dom_i.dart';
+import 'package:feature_first/features/weather/application/weather_state.dart';
+import 'package:feature_first/features/weather/application/weather_state_notifier.dart';
+import 'package:feature_first/features/weather/domain/weather_domain.dart';
+import 'package:feature_first/features/weather/infrastructure/weather_dom_i.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -11,6 +11,6 @@ final getIt = GetIt.instance;
 
 void init() {
 
-  getIt.registerLazySingleton<DashboardDomain>(()=> DashboardDomainI());
+  getIt.registerLazySingleton<WeatherDomain>(()=> WeatherDomainI());
 
 }

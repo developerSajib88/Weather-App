@@ -5,12 +5,14 @@ class BackgroundCard extends StatelessWidget {
 
   final double? width;
   final double? height;
+  final EdgeInsetsDirectional? padding;
   final Widget? child;
 
   const BackgroundCard({
     super.key,
     this.width,
     this.height,
+    this.padding,
     this.child
   });
 
@@ -19,8 +21,9 @@ class BackgroundCard extends StatelessWidget {
     return Container(
       width: width,
       height: height,
+      padding: padding,
       decoration: BoxDecoration(
-        borderRadius: radius4,
+        borderRadius: radius8,
         gradient: const LinearGradient(
           begin: Alignment(0.00, -1.00),
           end: Alignment(0, 1),
